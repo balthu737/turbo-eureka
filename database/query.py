@@ -1,5 +1,6 @@
 from database.conexcion import conexion
 from datetime import datetime
+import pandas as pd
 class Querys():
     def insetar_movimiento(self, usuario_id, amount, category_id=None, date=None):
         if date is None:
@@ -19,28 +20,29 @@ class Querys():
         cursor.close()
         conn.close()
         print("Se registro el usuario de forma correcta...")
+    def ver_categorias(self):
+        conn = conexion()
+        query = f'SELECT * FROM categoria'
+        df = pd.read_sql(query, conn)
+        print(f"""
+Listando tabla de categorias:
+{df}
+""")
+        return df
     def hoy(self):
         conn = conexion()
-        cursor = conn.cursor(dictionary=True)
         query = f''
-        cursor.execute(query)
-        dato = cursor.fetchall()
-        cursor.close()
-        conn.close()
+        df = pd.read_sql(query, conn)
         print(f'''Se hizo la consulta de forma correcta los datos son:
-{dato}''')
-        return dato
+{df}''')
+        return df
     def semana(self):
         conn = conexion()
-        cursor = conn.cursor(dictionary=True)
         query = f''
-        cursor.execute(query)
-        dato = cursor.fetchall()
-        cursor.close()
-        conn.close()
+        df = pd.read_sql(query, conn)
         print(f'''Se hizo la consulta de forma correcta los datos son:
-{dato}''')
-        return dato
+{df}''')
+        return df
     def mes(self):
         conn = conexion()
         cursor = conn.cursor(dictionary=True)
@@ -54,12 +56,8 @@ class Querys():
         return dato
     def anio(self):
         conn = conexion()
-        cursor = conn.cursor(dictionary=True)
         query = f''
-        cursor.execute(query)
-        dato = cursor.fetchall()
-        cursor.close()
-        conn.close()
+        df = pd.read_sql(query, conn)
         print(f'''Se hizo la consulta de forma correcta los datos son:
-{dato}''')
-        return dato
+{df}''')
+        return df
