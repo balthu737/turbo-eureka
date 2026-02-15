@@ -1,6 +1,6 @@
-def message_handler(text, funcion):
+def analisis(text, funcion):
     """
-    Docstring for message_handler
+    Docstring for analisis
     
     :param text: Mensaje del usuario
     :param funcion: Funcion para añadir gastos
@@ -10,7 +10,7 @@ def message_handler(text, funcion):
         print("Formato inválido")
     if len(texto) < 3:
         print("Formato inválido: gasto <monto> <categoria>")
-    if texto[0] != "gasto":
+    if texto[0] != "gasto" or "ahorro":
         print("El comando debe empezar con 'gasto'")
     if not texto[1].isnumeric():
         print("El monto debe ser un número")

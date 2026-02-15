@@ -8,5 +8,5 @@ gastos = Gasto()
 usuarios = Usuarios()
 TOKEN = "8017156472:AAFQbaQNjtlhS2KCe9W_4-MxCR-2Wm9CKRc"
 def mensaje(text):
-    return message_handler(text, query.insetar_movimiento())
+    return message_handler(text)
 bot(TOKEN, mensaje)
