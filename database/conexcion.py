@@ -1,6 +1,6 @@
 try:
     import mysql.connector
-    print("Importando...")
+    print("Se importo MySQL")
 except ModuleNotFoundError as e:
     print("No se importo correctamente",
 e)

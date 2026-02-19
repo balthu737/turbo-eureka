@@ -1,6 +1,6 @@
 try:
     import telebot
-    print("se importo de forma correcta")
+    print("Telebot se importo de forma correcta")
 except ModuleNotFoundError as e:
     print(e)
 from bot.commands import Commnads
@@ -15,6 +15,7 @@ def bot(token, funcion):
     toke = token
     bot = telebot.TeleBot(toke)
     commands = Commnads()
+    print("Escuchando...")
     @bot.message_handler(commands=["start"])
     def start_handler(message):
         response = commands.start()
@@ -56,5 +57,4 @@ def bot(token, funcion):
         funcion(mensaje)
         print("Guardando mensaje...")
     bot.polling(non_stop=True)
-    print("Escuchando...")
 

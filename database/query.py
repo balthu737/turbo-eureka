@@ -7,9 +7,10 @@ class Querys():
             date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         conn = conexion()
         cursor = conn.cursor()
-        query = f'INSERT INTO movimientos (people_id, amount, category_id, date) VALUES ({usuario_id}, {amount}, {category_id}, "{date}")'
+        query = f'INSERT INTO movimiento (usuario_id, monto, categoria_id, fecha) VALUES ({usuario_id}, {amount}, {category_id}, "{date}")'
         cursor.execute(query)
         cursor.close()
+        conn.commit()
         conn.close()
         print("Se añadio el gasto de forma correcta...")
     def crear_usuario(self, user_name, first_name, email=None):
@@ -18,6 +19,7 @@ class Querys():
         query = f'INSERT INTO usuarios (user_name, first_name, email) VALUES ({user_name}, {first_name}, {email})'
         cursor.execute(query)
         cursor.close()
+        conn.commit()
         conn.close()
         print("Se registro el usuario de forma correcta...")
     def ver_categorias(self):

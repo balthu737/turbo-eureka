@@ -1,8 +1,3 @@
-try:
-    import telebot
-    print("se importo de forma correcta")
-except ModuleNotFoundError as e:
-    print(e)
 class Commnads():
     """
     Docstring for Commands
