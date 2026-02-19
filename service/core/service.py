@@ -4,19 +4,10 @@ class Gasto():
     
     Son las funciones que tiene la tabla gasto
     """
-    def agregar_gasto(self):
-        """
-        Docstring for agregar_gasto
-        
-        Agrega los gastos
-        """
-        pass
-    def buscar_gasto(self):
-        """
-        Docstring for buscar_gasto
-        
-        Busca un gastos especifico
-        """
+    def id_gasto(self, monto, categoria, funcion):
+        mont = monto
+        cat = categoria
+        id = funcion(cat)
         pass
 
 class Usuarios():

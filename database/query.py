@@ -1,7 +1,7 @@
 from database.conexcion import conexion
 from datetime import datetime
 import pandas as pd
-class Querys():
+class   Querys():
     def insetar_movimiento(self, usuario_id, amount, category_id=None, date=None):
         if date is None:
             date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
