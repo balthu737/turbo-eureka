@@ -17,11 +17,14 @@ class   Querys():
         conn = conexion()
         cursor = conn.cursor()
         query = f'SELECT * FROM usuarios WHERE nombre = {user_name}'
-        result = cursor.execute(query)
-        if result = ''
+        cursor.execute(query)
+        result = cursor.fetchall()
+        if not result:
             query = f'INSERT INTO usuarios (user_name, first_name, email) VALUES ({user_name}, {first_name}, {email})'
             cursor.execute(query)
             print("Se registro el usuario de forma correcta...")
+        else:
+            print('usuario ya existente')
         cursor.close()
         conn.commit()
         conn.close()
