@@ -17,12 +17,18 @@ class   Querys():
     def crear_usuario(self, user_name, first_name, email=None):
         conn = conexion()
         cursor = conn.cursor()
-        query = f'INSERT INTO usuarios (user_name, first_name, email) VALUES ({user_name}, {first_name}, {email})'
+        query = f'SELECT * FROM usuarios WHERE nombre = {user_name}'
         cursor.execute(query)
+        result = cursor.fetchall()
+        if not result:
+            query = f'INSERT INTO usuarios (user_name, first_name, email) VALUES ({user_name}, {first_name}, {email})'
+            cursor.execute(query)
+            print("Se registro el usuario de forma correcta...")
+        else:
+            print('usuario ya existente')
         cursor.close()
         conn.commit()
         conn.close()
-        print("Se registro el usuario de forma correcta...")
     def ver_categorias(self):
         conn = conexion()
         query = f'SELECT * FROM categoria'
