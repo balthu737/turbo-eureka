@@ -53,8 +53,11 @@ def bot(token, funcion):
         print("Enviando comando /año...")
     @bot.message_handler(func=lambda message: True)
     def guardar_mensaje(message):
-        mensaje = message.text
-        funcion(mensaje)
+        usuario_id = message.from_user.id
+        nombre = message.from_user.first_name
+        username = message.from_user.username
+        texto = message.text
+        funcion(usuario_id, texto, nombre, username)
         print("Guardando mensaje...")
     bot.polling(non_stop=True)
 

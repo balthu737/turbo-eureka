@@ -1,4 +1,4 @@
-def analisis(text, funcion):
+def analisis(usuario_id, text, funcion):
     texto = text.lower().strip().split()
     if not texto:
         print("Formato inválido")
@@ -14,5 +14,5 @@ def analisis(text, funcion):
         return
     monto = int(texto[1])
     categoria = texto[2]
-    funcion(monto, categoria)
+    funcion(usuario_id, monto, categoria)
     print(f"Gasto registrado: {monto} en {categoria}")
