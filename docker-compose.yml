@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1111
+      MYSQL_DATABASE: bot
+      MYSQL_USER: botuser
+      MYSQL_PASSWORD: botpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./database/db/Dump20260219/bot_usuarios.sql:/docker-entrypoint-initdb.d/1_usuarios.sql
+      - ./database/db/Dump20260219/bot_categoria.sql:/docker-entrypoint-initdb.d/2_categoria.sql
+      - ./database/db/Dump20260219/bot_movimiento.sql:/docker-entrypoint-initdb.d/3_movimiento.sql
+      - mysql_data:/var/lib/mysql
+
+
+volumes:
+  mysql_data:

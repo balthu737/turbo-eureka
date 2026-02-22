@@ -1,0 +1,29 @@
+# Entorno virtual
+venv/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Git
+.git/
+.gitignore
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Base de datos local (si existe)
+*.db
+
+# Docker
+docker-compose.yml
+
+# Logs
+*.log
+
+# Tests temporales
+.to-do

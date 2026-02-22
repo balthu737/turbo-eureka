@@ -13,9 +13,9 @@ def conexion():
     retorna la variable conn, representa la conexion
     """
     conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="1111",
+        host="db",
+        user="botuser",
+        password="botpass",
         database="bot"
     )
     print("Se creo la conexion con la base de datos")
