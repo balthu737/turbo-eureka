@@ -13,7 +13,7 @@ def conexion():
     retorna la variable conn, representa la conexion
     """
     conn = mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST"),
+        host=os.getenv("MYSQLHOST"),
         user=os.getenv("MYSQLUSER"),
         password=os.getenv("MYSQLPASSWORD"),
         database=os.getenv("MYSQLDATABASE")
