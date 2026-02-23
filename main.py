@@ -2,11 +2,11 @@ from bot.telegram_bot import bot
 from database.query import Querys
 from service.core.mensaje import analisis
 from service.core.service import Gasto, Usuarios
-from config import TOKEN
+import os
 query = Querys()
 gastos = Gasto()
 usuarios = Usuarios()
-token = TOKEN
+token = os.getenv("TOKEN")
 
 def guardar_gasto(usuario_id, monto, categoria):
     query.guardar_gasto(usuario_id, monto, categoria)

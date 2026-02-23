@@ -32,7 +32,6 @@ venv/
 # Variables sensibles
 # =========================
 .env
-config.py
 
 # =========================
 # Docker
