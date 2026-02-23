@@ -18,11 +18,8 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - ./database/db/Dump20260219/bot_usuarios.sql:/docker-entrypoint-initdb.d/1_usuarios.sql
-      - ./database/db/Dump20260219/bot_categoria.sql:/docker-entrypoint-initdb.d/2_categoria.sql
-      - ./database/db/Dump20260219/bot_movimiento.sql:/docker-entrypoint-initdb.d/3_movimiento.sql
+      - ./database/db:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
-
 
 volumes:
   mysql_data:

@@ -1,14 +1,11 @@
 from database.conexcion import conexion
-from datetime import datetime
 import pandas as pd
 class   Querys():
-    def insetar_movimiento(self, usuario_id, amount, category_id, date=None):
-        if date is None:
-            date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    def insetar_movimiento(self, usuario_id, amount, category_id):
         conn = conexion()
         cursor = conn.cursor()
         id = self.id_categoria(category_id)
-        query = f'INSERT INTO movimiento (usuario_id, monto, categoria_id, fecha) VALUES ({usuario_id}, {amount}, {id}, "{date}")'
+        query = f'INSERT INTO movimiento (usuario_id, monto, categoria_id, fecha) VALUES ({usuario_id}, {amount}, {id}, NOW())'
         cursor.execute(query)
         cursor.close()
         conn.commit()
@@ -17,12 +14,12 @@ class   Querys():
     def crear_usuario(self, user_id, nombre, username):
         conn = conexion()
         cursor = conn.cursor()
-        query = f'SELECT * FROM usuarios WHERE id = {user_id}'
+        query = f'SELECT * FROM usuarios WHERE usuario_id = {user_id}'
         cursor.execute(query)
         result = cursor.fetchall()
         if not result:
             insert_query = f'''
-            INSERT INTO usuarios (id, nombre, username)
+            INSERT INTO usuarios (usuario_id, nombre, username)
             VALUES ({user_id}, "{nombre}", "{username}")
             '''
             cursor.execute(insert_query)
