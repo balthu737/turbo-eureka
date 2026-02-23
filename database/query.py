@@ -1,16 +1,25 @@
 from database.conexcion import conexion
 import pandas as pd
-class   Querys():
-    def insetar_movimiento(self, usuario_id, amount, category_id):
+class Querys():
+    def guardar_gasto(self, usuario_id, monto, category_id, tipo="gasto"):
         conn = conexion()
         cursor = conn.cursor()
         id = self.id_categoria(category_id)
-        query = f'INSERT INTO movimiento (usuario_id, monto, categoria_id, fecha) VALUES ({usuario_id}, {amount}, {id}, NOW())'
+        query = f'INSERT INTO movimiento (usuario_id, monto, categoria_id, tipo, fecha) VALUES ({usuario_id}, {monto}, {id}, "{tipo}", NOW())'
         cursor.execute(query)
         cursor.close()
         conn.commit()
         conn.close()
-        print("Se añadio el gasto de forma correcta...")
+        print(f'Se añadio el gasto de forma correcta, es: {monto}')
+    def guardar_ahorro(self, usuario_id, monto, tipo="ahorro"):
+        conn = conexion()
+        cursor = conn.cursor()
+        query = f'INSERT INTO movimiento (usuario_id, monto, tipo, fecha) VALUES ({usuario_id}, {monto}, "{tipo}", NOW())'
+        cursor.execute(query)
+        cursor.close()
+        conn.commit()
+        conn.close()
+        print(f'Se añadio el ahorro de forma correcta, es: {monto}')
     def crear_usuario(self, user_id, nombre, username):
         conn = conexion()
         cursor = conn.cursor()

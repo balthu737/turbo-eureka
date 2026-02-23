@@ -18,6 +18,7 @@ CREATE TABLE movimiento (
     monto DECIMAL(10,2),
     categoria_id INT,
     usuario_id BIGINT,
+    tipo VARCHAR(100) NOT NULL,
     FOREIGN KEY (categoria_id) REFERENCES categoria(id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );

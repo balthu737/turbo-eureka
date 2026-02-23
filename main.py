@@ -9,10 +9,13 @@ usuarios = Usuarios()
 token = TOKEN
 
 def guardar_gasto(usuario_id, monto, categoria):
-    query.insetar_movimiento(usuario_id, monto, categoria)
+    query.guardar_gasto(usuario_id, monto, categoria)
+
+def guardar_ahorro(usuario_id, monto):
+    query.guardar_ahorro(usuario_id, monto)
 
 def mensaje(usuario_id, text, nombre, username):
     query.crear_usuario(usuario_id, nombre, username)
-    analisis(usuario_id, text, guardar_gasto)
+    analisis(usuario_id, text, guardar_gasto, guardar_ahorro)
 
 bot(token, mensaje)
