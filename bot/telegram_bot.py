@@ -57,7 +57,8 @@ def bot(token, funcion):
         nombre = message.from_user.first_name
         username = message.from_user.username
         texto = message.text
-        funcion(usuario_id, texto, nombre, username)
+        resultado = funcion(usuario_id, texto, nombre, username)
         print("Guardando mensaje...")
+        bot.send_message(message.chat.id, resultado["mensaje"])
     bot.polling(non_stop=True)
 

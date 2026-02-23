@@ -16,6 +16,7 @@ def guardar_ahorro(usuario_id, monto):
 
 def mensaje(usuario_id, text, nombre, username):
     query.crear_usuario(usuario_id, nombre, username)
-    analisis(usuario_id, text, guardar_gasto, guardar_ahorro)
+    resultado = analisis(usuario_id, text, guardar_gasto, guardar_ahorro)
+    return resultado
 
 bot(token, mensaje)
